@@ -1,0 +1,14 @@
+if grep -q $USERNAME /etc/passwd ;then
+
+
+#finds /all -user files with $USERNAME VARIABLE and > (moves and creates) a variable text file. Then silences all errors.
+
+        find / -user $USERNAME > $USERNAME.txt 2>/dev/null
+
+        #This appeneds (or reads) what's inside of $USERNAME.txt
+        #Cat reads $USERNAME.txt and | pushes a wordcount onto a line >> into $USERNAME.txt
+
+        cat $USERNAME.txt | wc -l >> $USERNAME.txt
+        echo "Username Saved to $USERNAME.txt"
+else
+        echo "$USERNAME not found in the system"
